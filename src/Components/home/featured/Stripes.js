@@ -31,9 +31,7 @@ class Stripes extends Component {
           rotate: [stripe.rotate],
           top: [stripe.top],
           events: {
-            end() {
-              console.log("animation finished");
-            }
+            end() {}
           }
         }}
       >

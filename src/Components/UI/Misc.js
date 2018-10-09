@@ -24,3 +24,19 @@ export const Tag = props => {
     return template;
   }
 };
+
+export const firebaseLooper = snapshot => {
+  let data = [];
+  snapshot.forEach(childSnapshot => {
+    data.push({
+      ...childSnapshot.val(),
+      key: childSnapshot.key
+    });
+  });
+  return data;
+};
+
+export const reverseArray = actualArray => {
+  let reverseArray = actualArray.reverse();
+  return reverseArray;
+};
