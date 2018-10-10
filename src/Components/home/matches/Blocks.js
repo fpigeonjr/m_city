@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { firebaseMatches } from "../../../Firebase";
 import { firebaseLooper, reverseArray } from "../../UI/Misc";
+import MatchesBlock from "../../UI/MatchesBlock";
+import { Slide } from "react-reveal";
 
 class Blocks extends Component {
   state = {
@@ -17,7 +19,18 @@ class Blocks extends Component {
       });
   }
 
-  showMatches = () => <div>match</div>;
+  showMatches = matches =>
+    matches
+      ? matches.map(match => (
+          <Slide bottom key={match.id}>
+            <div className="item">
+              <div className="wrapper">
+                <MatchesBlock match={match} />
+              </div>
+            </div>
+          </Slide>
+        ))
+      : null;
 
   render() {
     return (
