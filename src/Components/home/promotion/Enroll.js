@@ -25,18 +25,33 @@ class Enroll extends Component {
     }
   };
 
-  handleSubmit = () => {
-    console.log("form submitted");
-  };
+  submitForm() {}
+
+  updateForm(element) {
+    const newFormData = { ...this.state.formData };
+    const newElement = { ...newFormData[element.id] };
+
+    newElement.value = element.event.target.value;
+
+    newFormData[element.id] = newElement;
+
+    this.setState({
+      formData: newFormData
+    });
+  }
 
   render() {
     return (
       <Fade>
         <div className="enroll_wrapper">
-          <form onSubmit={event => this.handleSubmit(event)}>
+          <form onSubmit={event => this.submitForm(event)}>
             <div className="enroll_title">Enter your email</div>
             <div className="enroll_input">
-              <FormField id={'email'} formData={this.state.formData.email} />
+              <FormField
+                id={"email"}
+                formData={this.state.formData.email}
+                change={element => this.updateForm(element)}
+              />
             </div>
           </form>
         </div>
