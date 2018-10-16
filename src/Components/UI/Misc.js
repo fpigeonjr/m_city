@@ -40,3 +40,16 @@ export const reverseArray = actualArray => {
   let reverseArray = actualArray.reverse();
   return reverseArray;
 };
+
+export const validate = element => {
+  let error = [true, ""];
+
+  if (element.validation.required) {
+    const valid = element.value.trim() !== "";
+    const message = `${!valid ? "This field is required" : ""} `;
+    // if not valid return message, if not send original error default
+    error = !valid ? [valid, message] : error;
+  }
+
+  return error;
+};
